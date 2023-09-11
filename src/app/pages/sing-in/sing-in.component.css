@@ -1,0 +1,102 @@
+.container_banner{
+  width: 100vw;
+  height: 100vh;
+  background:url("/assets/wallpaperbetter.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container_banner::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+.sing-form{
+  position: relative;
+  z-index: 2;
+  padding: 50px 60px;
+  border: 1px solid rgba(0, 97, 231, 0.2);
+  border-radius: 6px;
+  background: rgba(255,255,255,.1);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.form-body{
+  margin-top: 50px;
+}
+.logo_b-img{
+  width: 100px;
+  height: 100px;
+}
+.logo_b{
+  text-align: center;
+}
+.input-form{
+  width: 278px;
+  height: 46px;
+  outline: none;
+  border: 2px solid transparent;
+  background: #ffffff;
+  padding: 0 20px;
+  border-radius: 6px;
+  transition: all .3s;
+  font-size: 16px;
+  color: #222223;
+}
+.input-form:focus{
+  border: 2px solid #0061E7;
+}
+.input_container{
+  margin-bottom: 20px;
+}
+.checkbox{
+  margin-bottom: 45px;
+}
+.checkbox-label{
+  display: flex;
+  align-items: center;
+}
+#remember{
+  display: none;
+}
+.checkbox-container{
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 15px;
+}
+.checkbox-txt{
+  font-size: 14px;
+}
+.checkbox-icon{
+  width: 10px;
+  height: 10px;
+  fill: #0061E7;
+}
+.submit-btn{
+  width: 278px;
+  height: 46px;
+  border-radius: 6px;
+  border: 2px solid #0061E7;
+  transition: all .3s;
+  background: transparent;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.submit-btn:hover{
+  background: rgba(0, 97, 231, 0.1);
+}

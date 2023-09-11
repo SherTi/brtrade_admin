@@ -1,0 +1,29 @@
+<div class="container_banner">
+  <div class="sing-form">
+    <a href="">
+      <div class="logo_b">
+        <img src="/assets/BURDO_LOGO.png" alt="" class="logo_b-img">
+      </div>
+    </a>
+    <div class="form-body">
+      <div class="input_container">
+        <input type="text" class="input-form" placeholder="Логин">
+      </div>
+      <div class="input_container">
+        <input type="text" class="input-form" placeholder="Пароль">
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" id="remember">
+        <label for="remember" class="checkbox-label">
+          <div class="checkbox-container" (click)="icon = !icon">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="checkbox-icon" *ngIf="icon">
+              <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+            </svg>
+          </div>
+          <span class="checkbox-txt">Запомнить меня</span>
+        </label>
+      </div>
+      <button class="submit-btn">Войти</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="sidebar">
+      <div class="container_sidebar">
+          <div class="logo-container">
+              <a routerLink="/" class="logo">
+                <span>Burdo</span>
+              </a>
+          </div>
+          <div class="user-container">
+              <img src="/assets/user.svg" alt="" class="user-logo">
+              <div class="user-info">
+                <span class="user-role">Admin</span>
+                <span class="user-name">Burdo Admin</span>
+              </div>
+              <button class="user-log-out">
+                <img src="/assets/log-in-outline.svg" alt="" class="log-out-logo">
+              </button>
+          </div>
+          <div class="sidebar-body">
+              <ul class="nav-list">
+                <li class="nav-item">
+                  <a routerLink="/add" class="nav-link" routerLinkActive="nav-active">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="link-icon" routerLinkActive="nav-active">
+                      <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+                    </svg>
+                    <span>Добавить товар</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a routerLink="/category" class="nav-link" routerLinkActive="nav-active">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="link-icon" routerLinkActive="nav-active">
+                      <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+                    </svg>
+                    <span>Категория</span>
+                  </a>
+                </li>
+              </ul>
+        </div>
+    </div>
+  </div>
+  <div class="content">
+      <div class="header">
+          <h1 class="header-title">Добавить товар</h1>
+          <button class="header-button">Добавить</button>
+      </div>
+      <div class="page-content">
+        <router-outlet></router-outlet>
+      </div>
+  </div>
+</div>

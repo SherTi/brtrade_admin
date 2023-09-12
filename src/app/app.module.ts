@@ -7,6 +7,7 @@ import { SingInComponent } from './pages/sing-in/sing-in.component';
 import { MainComponent } from './shared/layouts/main/main.component';
 import { AddItemComponent } from './pages/add-item/add-item.component';
 import { AddCategoriesComponent } from './pages/add-categories/add-categories.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AddCategoriesComponent } from './pages/add-categories/add-categories.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

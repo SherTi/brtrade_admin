@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AddItemComponent {
 
+  part: number | null = null;
 }

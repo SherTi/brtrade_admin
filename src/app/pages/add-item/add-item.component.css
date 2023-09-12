@@ -5,11 +5,8 @@
   border-radius: 6px;
 }
 .first-form{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
   grid-gap: 20px;
-  height: 500px;
 }
 .form-input{
   border-radius: 6px;
@@ -29,10 +26,6 @@
   border: 2px solid #0061E7;
 }
 .image-input{
-  grid-column-start: 1;
-  grid-row-start: 1;
-  grid-row-end: 6;
-  grid-column-end: 3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,38 +34,10 @@
   position: relative;
   padding: 0!important;
 }
-.text_place{
-  grid-column-start: 3;
-  grid-row-start: 1;
-  grid-column-end: 5;
-  grid-row-end: 1;
-  display: grid;
-}
-.form-characteristic{
-  display: flex;
-  grid-column-start: 3;
-  grid-row-start: 2;
-  grid-column-end: 4;
-  grid-row-end: 2;
-  gap: 0 20px;
-}
-.text_form_title{
-  grid-column-start: 3;
-  grid-row-start: 2;
-  grid-column-end: 4;
-  grid-row-end: 2;
-}
-.text_form_deck{
-  grid-column-start: 4;
-  grid-row-start: 2;
-  grid-column-end: 4;
-  grid-row-end: 2;
-}
 .textarea_deck{
-  grid-column-start: 1;
-  grid-column-end: 5;
-  grid-row-start: 6;
-  grid-row-end: 9;
+  width: 100%;
+  margin-top: 20px;
+  height: 200px;
   padding: 15px 20px;
 }
 .textarea_deck::-webkit-scrollbar{
@@ -112,14 +77,15 @@
 .second-form{
   display: flex;
   margin-top: 20px;
-  gap: 0 20px;
+  gap: 20px 0;
+  flex-direction: column;
 }
 .form-block{
   display: flex;
-  flex-direction: column;
   width: 100%;
+  gap: 0 20px;
 }
-.text_form_title_engine{
+.text_form_title{
   display: flex;
   width: 50%;
   flex-direction: column;
@@ -130,7 +96,60 @@
   flex-direction: column;
   width: 50%;
   gap: 20px 0;
+  margin-top: 20px;
 }
 .text_from_h{
   height: 45px;
+}
+.category-form{
+  width: 100%;
+  margin-bottom: 20px;
+}
+.form-select{
+  width: 100%;
+  height: 45px;
+  cursor: pointer;
+}
+.form-select option{
+  cursor: pointer;
+}
+.add_img{
+  display: flex;
+  flex-direction: column;
+}
+.mini-img-block{
+  display: flex;
+  gap: 0 20px;
+  margin-top: 20px;
+}
+.main-img{
+  width: 462px;
+  height: 382px;
+}
+.mini-img{
+  width:140px;
+  height: 116px;
+}
+.text_place_block{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px 0;
+}
+.form-block-сharacteristic{
+  margin: 20px 0;
+}
+.text_place{
+  width: 100%;
+  height: 45px;
+}
+.form-block-characters{
+  width: 100%;
+}
+.add-place-form{
+  font-size: 25px;
+  color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

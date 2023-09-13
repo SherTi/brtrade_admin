@@ -5,6 +5,7 @@ import {MainComponent} from "./shared/layouts/main/main.component";
 import {AddItemComponent} from "./pages/add-item/add-item.component";
 import {AddCategoriesComponent} from "./pages/add-categories/add-categories.component";
 import {ApplicationsComponent} from "./pages/applications/applications.component";
+import {CertificateComponent} from "./pages/certificate/certificate.component";
 
 const routes: Routes = [
   {path : "" , component:MainComponent , children:[
@@ -12,6 +13,7 @@ const routes: Routes = [
       {path: "add", component:AddItemComponent},
       {path: "category" , component: AddCategoriesComponent},
       {path: "request" , component: ApplicationsComponent},
+      {path: "certificate" , component: CertificateComponent},
     ]},
   {path : "sing-in", component: SingInComponent},
 ];

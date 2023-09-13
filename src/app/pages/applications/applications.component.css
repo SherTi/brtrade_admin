@@ -16,3 +16,25 @@
   border: var(--border-primary);
   border-radius: 6px;
 }
+.table-req{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.row-req{
+  padding: 15px 20px;
+}
+.row-title{
+  border-bottom: var(--border-primary);
+}
+.user-req{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user-req-text{
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+}

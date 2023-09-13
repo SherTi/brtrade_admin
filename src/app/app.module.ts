@@ -9,6 +9,7 @@ import { AddItemComponent } from './pages/add-item/add-item.component';
 import { AddCategoriesComponent } from './pages/add-categories/add-categories.component';
 import {FormsModule} from "@angular/forms";
 import { ApplicationsComponent } from './pages/applications/applications.component';
+import { CertificateComponent } from './pages/certificate/certificate.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ApplicationsComponent } from './pages/applications/applications.compone
     MainComponent,
     AddItemComponent,
     AddCategoriesComponent,
-    ApplicationsComponent
+    ApplicationsComponent,
+    CertificateComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,102 +1,117 @@
-<div class="form-container">
-  <div class="category-form">
-    <select class="form-input form-select" [(ngModel)]="part">
-      <option [value]="null" selected hidden="">Категория</option>
-      <option [value]="1">Каталог техники</option>
-      <option [value]="2">Каталог запасных частей</option>
-    </select>
-  </div>
-  <div class="tractor-form">
-    <div class="first-form">
-      <div class="add_img">
-        <label for="add-photo" class="form-input image-input main-img">
-          <input type="file" id="add-photo"  accept="image/png, image/jpeg" class="hidden-input">
-          <span class="picture-txt">Требуемый размер (462 x 382)</span>
-          <div class="bg-info">
-            <span>Выбрать</span>
+<div class="header">
+  <h1 class="header-title">Добавить товар</h1>
+</div>
+<div class="page-content">
+  <div class="form-container">
+    <div class="category-form">
+      <select class="form-input form-select" [(ngModel)]="part">
+        <option [value]="null" selected hidden="">Категория</option>
+        <option [value]="1">Каталог техники</option>
+        <option [value]="2">Каталог запасных частей</option>
+      </select>
+    </div>
+    <div class="tractor-form" *ngIf="part != null && part == 1">
+      <div class="first-form">
+        <div class="add_img">
+          <label for="add-photo" class="form-input image-input main-img">
+            <input type="file" id="add-photo"  accept="image/png, image/jpeg" class="hidden-input">
+            <span class="picture-txt">Требуемый размер (462 x 382)</span>
+            <div class="bg-info">
+              <span>Выбрать</span>
+            </div>
+          </label>
+          <div class="mini-img-block">
+            <label for="add-photo_mini" class="form-input image-input mini-img">
+              <input type="file" id="add-photo_mini"  accept="image/png, image/jpeg" class="hidden-input">
+              <span class="picture-txt"></span>
+              <div class="bg-info">
+                <span>Выбрать</span>
+              </div>
+            </label>
+            <label for="add-photo_mini-1" class="form-input image-input mini-img">
+              <input type="file" id="add-photo_mini-1"  accept="image/png, image/jpeg" class="hidden-input">
+              <span class="picture-txt"></span>
+              <div class="bg-info">
+                <span>Выбрать</span>
+              </div>
+            </label>
+            <label for="add-photo_mini-2" class="form-input image-input mini-img">
+              <input type="file" id="add-photo_mini-2"  accept="image/png, image/jpeg" class="hidden-input">
+              <span class="picture-txt"></span>
+              <div class="bg-info">
+                <span>Выбрать</span>
+              </div>
+            </label>
           </div>
-        </label>
-        <div class="mini-img-block">
-          <label for="add-photo_mini" class="form-input image-input mini-img">
-            <input type="file" id="add-photo_mini"  accept="image/png, image/jpeg" class="hidden-input">
-            <span class="picture-txt"></span>
-            <div class="bg-info">
-              <span>Выбрать</span>
-            </div>
-          </label>
-          <label for="add-photo_mini-1" class="form-input image-input mini-img">
-            <input type="file" id="add-photo_mini-1"  accept="image/png, image/jpeg" class="hidden-input">
-            <span class="picture-txt"></span>
-            <div class="bg-info">
-              <span>Выбрать</span>
-            </div>
-          </label>
-          <label for="add-photo_mini-2" class="form-input image-input mini-img">
-            <input type="file" id="add-photo_mini-2"  accept="image/png, image/jpeg" class="hidden-input">
-            <span class="picture-txt"></span>
-            <div class="bg-info">
-              <span>Выбрать</span>
-            </div>
-          </label>
+        </div>
+        <div class="text_place_block">
+          <input type="text" class="form-input text_place" placeholder="Название">
+          <div class="form-block">
+            <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики">
+            <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение">
+          </div>
+          <div class="add-place-form form-input text_from_h">+</div>
         </div>
       </div>
-      <div class="text_place_block">
-        <input type="text" class="form-input text_place" placeholder="Название">
-        <div class="form-block">
-          <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики">
-          <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение">
-        </div>
-        <div class="add-place-form form-input text_from_h">+</div>
-      </div>
-    </div>
-    <textarea class="form-input textarea_deck" placeholder="Описание"></textarea>
-    <div class="form-block-сharacteristic">
-      <div class="second-form">
-        <input type="text" placeholder="Название" class="form-input text_from_h">
-        <div class="form-block">
-          <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики">
-          <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение">
-        </div>
-        <div class="add-place-form form-input text_from_h">+</div>
-      </div>
-      <div class="second-form">
-        <input type="text" placeholder="Название" class="form-input text_from_h">
-        <div class="form-block">
-          <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики">
-          <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение">
-        </div>
-        <div class="add-place-form form-input text_from_h">+</div>
-      </div>
-    </div>
-    <div class="form-block-сharacteristic">
-      <div class="second-form">
-        <input type="text" placeholder="Название" class="form-input text_from_h">
-        <input type="text" class="form-input text_from_h" placeholder="Название характеристики">
-        <div class="add-place-form form-input text_from_h">+</div>
-      </div>
-    </div>
-  </div>
-  <div class="tractor-form" *ngIf="part != null && part == 2">
-    <div class="first-form">
-      <label for="add-photo_1" class="form-input image-input">
-        <input type="file" id="add-photo_1"  accept="image/png, image/jpeg" class="hidden-input">
-        <span class="picture-txt">Максимум 3 шт</span>
-        <div class="bg-info">
-          <span>Выбрать</span>
-        </div>
-      </label>
-      <div class="text_place">
-        <input type="text" class="form-input" placeholder="Название">
-      </div>
-      <input type="text" class="form-input text_form_title" placeholder="Название характеристики" >
-      <input type="text" class="form-input text_form_deck" placeholder="Значение">
-      <input type="text" class="form-input text_form_title_2" placeholder="Название характеристики">
-      <input type="text" class="form-input text_form_deck_2" placeholder="Значение">
-      <input type="text" class="form-input text_form_title>_3" placeholder="Название характеристики">
-      <input type="text" class="form-input text_form_deck_3" placeholder="Значение">
-      <input type="text" class="form-input text_form_title_4" placeholder="Название характеристики">
-      <input type="text" class="form-input text_form_deck_4" placeholder="Значение">
       <textarea class="form-input textarea_deck" placeholder="Описание"></textarea>
+      <div class="second-form">
+        <input type="text" placeholder="Заголовок" class="form-input text_from_h">
+        <div class="form-block">
+          <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики">
+          <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение">
+        </div>
+        <div class="add-place-form form-input text_from_h">+</div>
+      </div>
+      <div class="second-form">
+        <input type="text" placeholder="Заголовок" class="form-input text_from_h">
+        <div class="form-block">
+          <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики">
+          <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение">
+        </div>
+        <div class="add-place-form form-input text_from_h">+</div>
+      </div>
+      <div class="second-form">
+        <input type="text" placeholder="Заголовок" class="form-input text_from_h">
+        <input type="text" class="form-input text_from_h" placeholder="Значение">
+        <div class="add-place-form form-input text_from_h">+</div>
+      </div>
+      <div class="form-btn-block">
+        <button class="header-button">Добавить</button>
+      </div>
+    </div>
+<!--    =====-->
+    <div class="tractor-form" *ngIf="part != null && part==2">
+      <div class="first-form">
+        <div class="add_img">
+          <label for="add-img-part" class="form-input image-input main-img">
+            <input type="file" id="add-img-part"  accept="image/png, image/jpeg" class="hidden-input">
+            <span class="picture-txt">Требуемый размер (462 x 382)</span>
+            <div class="bg-info">
+              <span>Выбрать</span>
+            </div>
+          </label>
+        </div>
+        <div class="text_place_block">
+          <input type="text" class="form-input text_place" placeholder="Название">
+          <div class="form-block">
+            <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики">
+            <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение">
+          </div>
+          <div class="add-place-form form-input text_from_h">+</div>
+        </div>
+      </div>
+      <textarea class="form-input textarea_deck" placeholder="Описание"></textarea>
+      <div class="second-form">
+        <input type="text" placeholder="Название" class="form-input text_from_h">
+        <div class="form-block">
+          <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики">
+          <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение">
+        </div>
+        <div class="add-place-form form-input text_from_h">+</div>
+      </div>
+      <div class="form-btn-block">
+        <button class="header-button">Добавить</button>
+      </div>
     </div>
   </div>
 </div>

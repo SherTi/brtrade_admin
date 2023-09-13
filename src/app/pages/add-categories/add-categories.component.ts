@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-categories.component.css']
 })
 export class AddCategoriesComponent {
-
+  textTitle = "Добавить категорию"
 }

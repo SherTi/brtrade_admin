@@ -4,12 +4,14 @@ import {SingInComponent} from "./pages/sing-in/sing-in.component";
 import {MainComponent} from "./shared/layouts/main/main.component";
 import {AddItemComponent} from "./pages/add-item/add-item.component";
 import {AddCategoriesComponent} from "./pages/add-categories/add-categories.component";
+import {ApplicationsComponent} from "./pages/applications/applications.component";
 
 const routes: Routes = [
   {path : "" , component:MainComponent , children:[
       {path: "" , redirectTo : "/add" , pathMatch: "full"},
       {path: "add", component:AddItemComponent},
       {path: "category" , component: AddCategoriesComponent},
+      {path: "request" , component: ApplicationsComponent},
     ]},
   {path : "sing-in", component: SingInComponent},
 ];

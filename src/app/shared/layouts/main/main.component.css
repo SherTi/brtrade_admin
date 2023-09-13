@@ -120,18 +120,6 @@
   border-radius: 50px;
   background: #0061E7;
 }
-.header{
-  border-bottom: var(--border-primary);
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.header-title{
-  font-size: 3rem;
-  font-weight: 400;
-  margin: 0;
-}
 .header-button{
   font-size: 1.2rem;
   border-radius: 6px;

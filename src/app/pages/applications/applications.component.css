@@ -1,0 +1,18 @@
+.header{
+  border-bottom: var(--border-primary);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-title{
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 0;
+}
+.form-container{
+  padding: 30px;
+  margin-top: 30px;
+  border: var(--border-primary);
+  border-radius: 6px;
+}

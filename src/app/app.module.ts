@@ -10,6 +10,7 @@ import { AddCategoriesComponent } from './pages/add-categories/add-categories.co
 import {FormsModule} from "@angular/forms";
 import { ApplicationsComponent } from './pages/applications/applications.component';
 import { CertificateComponent } from './pages/certificate/certificate.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CertificateComponent } from './pages/certificate/certificate.component'
     AddCategoriesComponent,
     ApplicationsComponent,
     CertificateComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

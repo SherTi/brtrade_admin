@@ -5,7 +5,6 @@ import {MainComponent} from "./shared/layouts/main/main.component";
 import {AddItemComponent} from "./pages/add-item/add-item.component";
 import {AddCategoriesComponent} from "./pages/add-categories/add-categories.component";
 import {ApplicationsComponent} from "./pages/applications/applications.component";
-import {CertificateComponent} from "./pages/certificate/certificate.component";
 import {SettingsComponent} from "./pages/settings/settings.component";
 
 const routes: Routes = [

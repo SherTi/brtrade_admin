@@ -15,6 +15,7 @@
   margin-top: 30px;
   border: var(--border-primary);
   border-radius: 6px;
+  width: 50%;
 }
 .hidden-input{
   display: none;
@@ -43,8 +44,7 @@
   padding: 0!important;
 }
 .main-img-other{
-  width: 300px;
-  height: 330px;
+  height: 45px;
 }
 .bg-info{
   position: absolute;
@@ -92,7 +92,7 @@
 .title-section{
   font-size: 1.8rem;
   color: #ffffff;
-  margin: 25px 0 0 0;
+  margin: 0 0 25px 0;
   padding: 0;
 }
 .add_img{
@@ -111,4 +111,9 @@
 .mini-img{
   width:140px;
   height: 116px;
+}
+.form-block_setting{
+  display: flex;
+  width: 100%;
+  gap: 0 20px;
 }

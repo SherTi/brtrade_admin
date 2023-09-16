@@ -9,7 +9,6 @@ import { AddItemComponent } from './pages/add-item/add-item.component';
 import { AddCategoriesComponent } from './pages/add-categories/add-categories.component';
 import {FormsModule} from "@angular/forms";
 import { ApplicationsComponent } from './pages/applications/applications.component';
-import { CertificateComponent } from './pages/certificate/certificate.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { SettingsComponent } from './pages/settings/settings.component';
     AddItemComponent,
     AddCategoriesComponent,
     ApplicationsComponent,
-    CertificateComponent,
     SettingsComponent,
   ],
   imports: [

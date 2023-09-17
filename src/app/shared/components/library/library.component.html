@@ -1,0 +1,27 @@
+<div class="modal-window-background">
+  <div class="modal-window">
+    <div class="load">
+      <h2 class="title-section">Библиотека</h2>
+      <div class="block">
+        <div class="block-items">
+          <div class="img-block" *ngFor="let item of items" (click)="item" >
+            <img src="assets/img.png" alt="" class="img">
+            <div class="check" *ngIf="check"></div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-block">Добавить</button>
+    </div>
+    <div class="upload">
+      <h2 class="title-section">Загрузить</h2>
+      <label for="add-img" class="form-input image-input add-img">
+        <input type="file" class="hidden-input" id="add-img">
+        <span class="picture-txt">Загрузить фото в библиотеку</span>
+        <div class="bg-info">
+          <span>Выбрать</span>
+        </div>
+      </label>
+      <button class="btn-block">Загрузить</button>
+    </div>
+  </div>
+</div>

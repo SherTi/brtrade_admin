@@ -139,3 +139,52 @@
 .form-input:focus{
   border: 2px solid #0061E7;
 }
+.switch{
+  width: 80px;
+  background: #222028;
+  border-radius: 32px;
+  height: 45px;
+  cursor: pointer;
+}
+.switch_eclipse{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #0061E7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s;
+  cursor: pointer;
+}
+.switch-text-item{
+  padding: 0;
+  margin: 0;
+}
+.switch-text{
+  display: flex;
+}
+.on{
+  transform: translateX(34px);
+  transition: all .3s;
+}
+.form-block{
+  padding: 20px;
+  border: var(--border-primary);
+}
+.form-block-1{
+  width: 48%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+  border: var(--border-primary);
+}
+.set-setting{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.w-100{
+  width: 100%;
+}

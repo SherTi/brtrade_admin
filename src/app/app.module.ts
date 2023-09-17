@@ -11,6 +11,7 @@ import {FormsModule} from "@angular/forms";
 import { ApplicationsComponent } from './pages/applications/applications.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import { LibraryComponent } from './shared/components/library/library.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
     ApplicationsComponent,
     SettingsComponent,
     CatalogComponent,
+    LibraryComponent,
   ],
   imports: [
     BrowserModule,

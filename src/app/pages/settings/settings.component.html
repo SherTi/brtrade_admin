@@ -2,74 +2,59 @@
   <h1 class="header-title">Настройки сайта</h1>
 </div>
 <div class="page-content">
-  <div class="form-block_setting">
-    <div class="form-container w-50">
-      <h2 class="title-section">Добавить сертификат</h2>
-      <label for="add-img" class="form-input image-input main-img-other">
-        <input type="file" id="add-img"  accept="image/png, image/jpeg" class="hidden-input">
-        <span class="picture-txt">Загрузите сертификат</span>
-        <div class="bg-info">
-          <span>Выбрать</span>
-        </div>
-      </label>
-      <div class="form-btn-block">
-        <button class="header-button">Добавить</button>
+  <div class="form-container">
+    <h2 class="title-section">Добавить фото сотрудников</h2>
+    <label for="add-photo" class="form-input image-input">
+      <input type="file" id="add-photo"  accept="image/png, image/jpeg" class="hidden-input">
+      <span class="picture-txt">Требуемый размер (462 x 382)</span>
+      <div class="bg-info">
+        <span>Выбрать</span>
       </div>
-    </div>
-    <div class="form-container w-50">
-      <h2 class="title-section">Добавить логотип партнёров</h2>
-      <label for="add-logo" class="form-input image-input main-img-other">
-        <input type="file" id="add-logo"  accept="image/png, image/jpeg" class="hidden-input">
-        <span class="picture-txt">Загрузите логотип</span>
-        <div class="bg-info">
-          <span>Выбрать</span>
-        </div>
-      </label>
-      <div class="form-btn-block">
-        <button class="header-button">Добавить</button>
-      </div>
-    </div>
-  </div>
-  <div class="form-block_setting">
-    <div class="form-container w-50">
-      <h2 class="title-section">Добавить фото сотрудников</h2>
-      <div class="add_img">
-        <label for="add-photo" class="form-input image-input main-img">
-          <input type="file" id="add-photo"  accept="image/png, image/jpeg" class="hidden-input">
-          <span class="picture-txt">Требуемый размер (462 x 382)</span>
+    </label>
+    <div class="form-block_setting">
+      <div class="form-container w-50">
+        <h2 class="title-section">Добавить сертификат</h2>
+        <label for="add-img" class="form-input image-input main-img-other">
+          <input type="file" id="add-img"  accept="image/png, image/jpeg" class="hidden-input">
+          <span class="picture-txt">Загрузите сертификат</span>
           <div class="bg-info">
             <span>Выбрать</span>
           </div>
         </label>
-        <div class="mini-img-block">
-          <label for="add-photo_mini" class="form-input image-input mini-img">
-            <input type="file" id="add-photo_mini"  accept="image/png, image/jpeg" class="hidden-input">
-            <span class="picture-txt"></span>
-            <div class="bg-info">
-              <span>Выбрать</span>
-            </div>
-          </label>
-          <label for="add-photo_mini-1" class="form-input image-input mini-img">
-            <input type="file" id="add-photo_mini-1"  accept="image/png, image/jpeg" class="hidden-input">
-            <span class="picture-txt"></span>
-            <div class="bg-info">
-              <span>Выбрать</span>
-            </div>
-          </label>
-          <label for="add-photo_mini-2" class="form-input image-input mini-img">
-            <input type="file" id="add-photo_mini-2"  accept="image/png, image/jpeg" class="hidden-input">
-            <span class="picture-txt"></span>
-            <div class="bg-info">
-              <span>Выбрать</span>
-            </div>
-          </label>
-        </div>
       </div>
-      <div class="form-btn-block">
-        <button class="header-button">Добавить</button>
+      <div class="form-container w-50">
+        <h2 class="title-section">Добавить логотип партнёров</h2>
+        <label for="add-logo" class="form-input image-input main-img-other">
+          <input type="file" id="add-logo"  accept="image/png, image/jpeg" class="hidden-input">
+          <span class="picture-txt">Загрузите логотип</span>
+          <div class="bg-info">
+            <span>Выбрать</span>
+          </div>
+        </label>
       </div>
     </div>
-    <div class="form-container w-50"></div>
+    <h2 class="title-section">Добавить номер телефона</h2>
+    <input type="text" class="form-input text_place" placeholder="Номер телефона">
+    <input type="text" class="form-input text_place" placeholder="Номер телефона">
+  </div>
+  <div class="form-block_setting">
+    <div class="form-container w-50 set-setting">
+      <div class="form-block-1">
+        <h2 class="title-section">Отображение знака меню в страницах</h2>
+        <div class="switch" (click)="switch = !switch">
+          <div class="switch_eclipse" [ngClass]="{'on': switch}">{{switch ? "Вкл" : "Выкл"}}</div>
+        </div>
+      </div>
+      <div class="form-block-1">
+        <h2 class="title-section">Добавить ссылки на соц сеть</h2>
+        <input type="text" class="form-input text_place" placeholder="Введите ссылку на Телеграм">
+        <input type="text" class="form-input text_place" placeholder="Введите ссылку на Facebook">
+        <input type="text" class="form-input text_place" placeholder="Введите ссылку на Instagram">
+        <div class="form-btn-block">
+          <button class="header-button">Добавить</button>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="form-container">
     <h2 class="title-section">Добавить фото в раздел "Мы поставляем"</h2>

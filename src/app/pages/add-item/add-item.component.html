@@ -12,14 +12,13 @@
     </div>
     <div class="tractor-form" *ngIf="part != null && part == 1">
       <div class="first-form">
-        <div class="add_img">
-          <label for="add-photo" class="form-input image-input main-img">
-            <input type="file" id="add-photo"  accept="image/png, image/jpeg" class="hidden-input">
+        <div class="add_img" >
+          <div class="form-input image-input main-img" (click)="modal = !modal">
             <span class="picture-txt">Требуемый размер (462 x 382)</span>
             <div class="bg-info">
               <span>Выбрать</span>
             </div>
-          </label>
+          </div>
           <div class="mini-img-block">
             <label for="add-photo_mini" class="form-input image-input mini-img">
               <input type="file" id="add-photo_mini"  accept="image/png, image/jpeg" class="hidden-input">
@@ -79,7 +78,6 @@
         <button class="header-button">Добавить</button>
       </div>
     </div>
-<!--    =====-->
     <div class="tractor-form" *ngIf="part != null && part==2">
       <div class="first-form">
         <div class="add_img">
@@ -115,3 +113,4 @@
     </div>
   </div>
 </div>
+<div class="app-library" ></div>

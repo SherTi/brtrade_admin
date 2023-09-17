@@ -6,6 +6,7 @@ import {AddItemComponent} from "./pages/add-item/add-item.component";
 import {AddCategoriesComponent} from "./pages/add-categories/add-categories.component";
 import {ApplicationsComponent} from "./pages/applications/applications.component";
 import {SettingsComponent} from "./pages/settings/settings.component";
+import {CatalogComponent} from "./pages/catalog/catalog.component";
 
 const routes: Routes = [
   {path : "" , component:MainComponent , children:[
@@ -14,6 +15,7 @@ const routes: Routes = [
       {path: "category" , component: AddCategoriesComponent},
       {path: "request" , component: ApplicationsComponent},
       {path: "setting" , component: SettingsComponent},
+      {path: "catalog" , component: CatalogComponent},
     ]},
   {path : "sing-in", component: SingInComponent},
 ];

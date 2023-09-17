@@ -1,0 +1,93 @@
+.header{
+  border-bottom: var(--border-primary);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-title{
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 0;
+}
+.form-container{
+  padding: 30px;
+  margin-top: 30px;
+  border: var(--border-primary);
+  border-radius: 6px;
+}
+.catalog-list{
+  list-style: none;
+  margin: 30px 0 0;
+  padding: 0 0 10px;
+  display: grid;
+  grid-template-columns: .5fr 1.5fr 1fr;
+}
+.catalog-item{
+  padding: 0 15px;
+  font-size: 1.2rem;
+  color: #ffffffb3;
+  font-weight: 400;
+}
+.product-text{
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 30px;
+  color: #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.submit-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all .3s;
+  margin-right: 10px;
+}
+.edit {
+  background: rgba(47,128,237,.08);
+}
+.up{
+  background: rgba(41,180,116,.08);
+}
+.delete{
+  background: rgba(235, 87, 87, 0.08);
+}
+.up:hover {
+  background: rgba(41,180,116,.2);
+}
+.edit:hover {
+  background: rgba(47,128,237,.2);
+}
+.delete:hover {
+  background: rgba(235,87,87,.2);
+}
+.actions-items{
+  display: flex;
+  align-items: center;
+}
+.product-card{
+  border-radius: 6px;
+  background: #222028;
+  padding: 15px 0;
+  margin: 10px 0;
+}
+.submit-btn-icon{
+  width: 15px;
+}
+.delete-icon{
+  fill: rgb(235, 87, 87);
+}
+.edit-icon{
+  fill: rgb(47, 128, 237);
+}
+.up-icon{
+  fill: rgb(41, 180, 116);
+}

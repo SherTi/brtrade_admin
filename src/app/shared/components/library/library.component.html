@@ -4,7 +4,7 @@
       <h2 class="title-section">Библиотека</h2>
       <div class="block">
         <div class="block-items">
-          <div class="img-block" *ngFor="let item of items" (click)="item" >
+          <div class="img-block" *ngFor="let item of items" (click)="onClick(item)">
             <img src="assets/img.png" alt="" class="img">
             <div class="check" *ngIf="check"></div>
           </div>

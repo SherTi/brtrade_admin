@@ -13,7 +13,7 @@
     <div class="tractor-form" *ngIf="part != null && part == 1">
       <div class="first-form">
         <div class="add_img" >
-          <div class="form-input image-input main-img" (click)="modal = !modal">
+          <div class="form-input image-input main-img" (click)="modalWin()">
             <span class="picture-txt">Требуемый размер (462 x 382)</span>
             <div class="bg-info">
               <span>Выбрать</span>
@@ -113,4 +113,4 @@
     </div>
   </div>
 </div>
-<div class="app-library" ></div>
+<div class="app-library" *ngIf="modalWindow"></div>

@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
+import {elementAt} from "rxjs";
 
 
 @Component({
@@ -7,6 +8,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./library.component.css']
 })
 export class LibraryComponent {
+
   items:any [] = [
     {
       id: 1,
@@ -15,8 +17,8 @@ export class LibraryComponent {
       height: "123px",
       size: "150x123",
       selected: false,
-      createdAt: "",
-      createdUp: "",
+      createdAt: "1",
+      createdUp: "1",
     },
     {
       id: 2,
@@ -25,8 +27,8 @@ export class LibraryComponent {
       height: "123px",
       size: "150x123",
       selected: false,
-      createdAt: "",
-      createdUp: "",
+      createdAt: "2",
+      createdUp: "2",
     },
     {
       id: 3,
@@ -35,8 +37,8 @@ export class LibraryComponent {
       height: "123px",
       size: "150x123",
       selected: false,
-      createdAt: "",
-      createdUp: "",
+      createdAt: "3",
+      createdUp: "3",
     },
     {
       id: 4,
@@ -45,21 +47,81 @@ export class LibraryComponent {
       height: "123px",
       size: "150x123",
       selected: false,
-      createdAt: "",
-      createdUp: "",
+      createdAt: "4",
+      createdUp: "4",
+    },
+    {
+      id: 5,
+      name: "Тракторк",
+      width: "150px",
+      height: "123px",
+      size: "150x123",
+      selected: false,
+      createdAt: "5",
+      createdUp: "5",
+    },
+    {
+      id: 6,
+      name: "Тракторк",
+      width: "150px",
+      height: "123px",
+      size: "150x123",
+      selected: false,
+      createdAt: "6",
+      createdUp: "6",
+    },
+    {
+      id: 7,
+      name: "Тракторк",
+      width: "150px",
+      height: "123px",
+      size: "150x123",
+      selected: false,
+      createdAt: "7",
+      createdUp: "7",
+    },
+    {
+      id: 8,
+      name: "Тракторк",
+      width: "150px",
+      height: "123px",
+      size: "150x123",
+      selected: false,
+      createdAt: "8",
+      createdUp: "8",
+    },
+    {
+      id: 9,
+      name: "Тракторк",
+      width: "150px",
+      height: "123px",
+      size: "150x123",
+      selected: false,
+      createdAt: "9",
+      createdUp: "9",
     },
   ]
-
-  check: boolean = false
   newArr : any = []
-  onChange() {
-    this.newArr.filter(() => {
+  active:boolean = false
+  modal: any;
 
-      console.log(this.newArr)
-    })
-  }
   onClick(item: any) {
-    item.selected = true;
-    console.log(item)
+    item.selected = !item.selected;
+    this.onChange()
+  }
+
+  onChange() {
+   this.newArr = this.items.filter(item => item.selected == true)
+
+   if (this.newArr.length == 1 || this.newArr.length == 4) {
+     this.active = true
+      console.log("Функция (: успешно работает")
+   } else {
+     this.active = false
+     console.log("Функция ): не работает")
+   }
+  }
+  submit() {
+
   }
 }

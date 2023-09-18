@@ -6,11 +6,11 @@
         <div class="block-items">
           <div class="img-block" *ngFor="let item of items" (click)="onClick(item)">
             <img src="assets/img.png" alt="" class="img">
-            <div class="check" *ngIf="check"></div>
+            <div class="check" *ngIf="item.selected">✓</div>
           </div>
         </div>
       </div>
-      <button class="btn-block">Добавить</button>
+      <button class="btn-block" [disabled]="!active" (click)="submit()" [ngClass]="{activeBtn: active , noActiveBtn: !active}" >Добавить</button>
     </div>
     <div class="upload">
       <h2 class="title-section">Загрузить</h2>

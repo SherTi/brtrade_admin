@@ -1,12 +1,22 @@
 import { Component } from '@angular/core';
+import {LibraryComponent} from "../../shared/components/library/library.component";
 
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
-export class AddItemComponent {
+export class AddItemComponent extends LibraryComponent{
 
   part: number | null = null;
-  modal: boolean = false
+  modalWindow:boolean = false
+  item: any;
+
+
+  modalWin() {
+    this.modalWindow = !this.modalWindow
+    console.log("click")
+    this.submit()
+  }
+
 }

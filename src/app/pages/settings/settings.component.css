@@ -11,7 +11,7 @@
   margin: 0;
 }
 .form-container{
-  padding: 30px;
+  padding: 20px;
   margin-top: 30px;
   border: var(--border-primary);
   border-radius: 6px;
@@ -71,7 +71,7 @@
 .form-btn-block{
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 .header-button{
   font-size: 1.2rem;
@@ -173,7 +173,7 @@
   border: var(--border-primary);
 }
 .form-block-1{
-  width: 48%;
+  width: 50%;
   padding: 20px;
   display: flex;
   flex-direction: column;

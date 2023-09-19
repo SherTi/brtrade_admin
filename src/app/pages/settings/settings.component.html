@@ -1,10 +1,15 @@
 <div class="header">
   <h1 class="header-title">Настройки сайта</h1>
+  <div class="turn-contact">
+    <div class="switch" (click)="switch = !switch" title="Отображение знака меню в страницах">
+      <div class="switch_eclipse" [ngClass]="{'on': switch}">{{switch ? "Вкл" : "Выкл"}}</div>
+    </div>
+  </div>
 </div>
 <div class="page-content">
   <div class="form-container">
     <h2 class="title-section">Добавить фото сотрудников</h2>
-    <label for="add-photo" class="form-input image-input">
+    <label for="add-photo" class="form-input image-input text_place">
       <input type="file" id="add-photo"  accept="image/png, image/jpeg" class="hidden-input">
       <span class="picture-txt">Требуемый размер (462 x 382)</span>
       <div class="bg-info">
@@ -33,26 +38,19 @@
         </label>
       </div>
     </div>
-    <h2 class="title-section">Добавить номер телефона</h2>
-    <input type="text" class="form-input text_place" placeholder="Номер телефона">
-    <input type="text" class="form-input text_place" placeholder="Номер телефона">
   </div>
-  <div class="form-block_setting">
-    <div class="form-container w-50 set-setting">
-      <div class="form-block-1">
-        <h2 class="title-section">Отображение знака меню в страницах</h2>
-        <div class="switch" (click)="switch = !switch">
-          <div class="switch_eclipse" [ngClass]="{'on': switch}">{{switch ? "Вкл" : "Выкл"}}</div>
-        </div>
-      </div>
+  <div class="form-container">
+    <div class="form-block_setting">
       <div class="form-block-1">
         <h2 class="title-section">Добавить ссылки на соц сеть</h2>
         <input type="text" class="form-input text_place" placeholder="Введите ссылку на Телеграм">
         <input type="text" class="form-input text_place" placeholder="Введите ссылку на Facebook">
         <input type="text" class="form-input text_place" placeholder="Введите ссылку на Instagram">
-        <div class="form-btn-block">
-          <button class="header-button">Добавить</button>
-        </div>
+      </div>
+      <div class="form-block-1">
+        <h2 class="title-section">Добавить номер телефона</h2>
+        <input type="text" class="form-input text_place" placeholder="Номер телефона">
+        <input type="text" class="form-input text_place" placeholder="Номер телефона">
       </div>
     </div>
   </div>
@@ -90,8 +88,8 @@
         <input type="text" class="form-input text_place" placeholder="Описание">
       </div>
     </div>
-    <div class="form-btn-block">
-      <button class="header-button">Добавить</button>
-    </div>
+  </div>
+  <div class="form-btn-block">
+    <button class="header-button">Сохранить</button>
   </div>
 </div>

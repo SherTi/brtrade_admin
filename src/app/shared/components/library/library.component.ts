@@ -106,6 +106,9 @@ export class LibraryComponent {
   modal: any;
 
   onClick(item: any) {
+    for (let i = 0; i < this.items.length; i++) {
+      this.items[i].selected = false;
+    }
     item.selected = !item.selected;
     this.onChange()
   }
@@ -113,7 +116,7 @@ export class LibraryComponent {
   onChange() {
    this.newArr = this.items.filter(item => item.selected == true)
 
-   if (this.newArr.length == 1 || this.newArr.length == 4) {
+   if (this.newArr.length == 1) {
      this.active = true
       console.log("Функция (: успешно работает")
    } else {

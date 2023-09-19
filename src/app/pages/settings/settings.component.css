@@ -91,7 +91,7 @@
 .title-section{
   font-size: 1.8rem;
   color: #ffffff;
-  margin: 0 0 25px 0;
+  margin: 0 0 15px 0;
   padding: 0;
 }
 .add_img{
@@ -177,7 +177,6 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px 0;
   border: var(--border-primary);
 }
 .set-setting{
@@ -187,4 +186,7 @@
 }
 .w-100{
   width: 100%;
+}
+.mar-b-20{
+  margin-bottom: 20px;
 }

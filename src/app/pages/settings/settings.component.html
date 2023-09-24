@@ -9,33 +9,30 @@
 <div class="page-content">
   <div class="form-container">
     <h2 class="title-section">Добавить фото сотрудников</h2>
-    <label for="add-photo" class="form-input image-input text_place">
-      <input type="file" id="add-photo"  accept="image/png, image/jpeg" class="hidden-input">
+    <div class="form-input image-input text_place" (click)="modalWin()">
       <span class="picture-txt">Требуемый размер (462 x 382)</span>
       <div class="bg-info">
         <span>Выбрать</span>
       </div>
-    </label>
+    </div>
     <div class="form-block_setting">
       <div class="form-container w-50">
         <h2 class="title-section">Добавить сертификат</h2>
-        <label for="add-img" class="form-input image-input main-img-other">
-          <input type="file" id="add-img"  accept="image/png, image/jpeg" class="hidden-input">
+        <div class="form-input image-input main-img-other" (click)="modalWin()">
           <span class="picture-txt">Загрузите сертификат</span>
           <div class="bg-info">
             <span>Выбрать</span>
           </div>
-        </label>
+        </div>
       </div>
       <div class="form-container w-50">
         <h2 class="title-section">Добавить логотип партнёров</h2>
-        <label for="add-logo" class="form-input image-input main-img-other">
-          <input type="file" id="add-logo"  accept="image/png, image/jpeg" class="hidden-input">
+        <div class="form-input image-input main-img-other" (click)="modalWin()">
           <span class="picture-txt">Загрузите логотип</span>
           <div class="bg-info">
             <span>Выбрать</span>
           </div>
-        </label>
+        </div>
       </div>
     </div>
   </div>
@@ -58,33 +55,30 @@
     <h2 class="title-section">Добавить фото в раздел "Мы поставляем"</h2>
     <div class="form-block-item">
       <div class="t-img-block">
-        <label for="add-img_t1" class="form-input image-input main-img-t">
-          <input type="file" id="add-img_t1"  accept="image/png, image/jpeg" class="hidden-input">
+        <div class="form-input image-input main-img-t" (click)="modalWin()">
           <span class="picture-txt">Загрузите фото</span>
           <div class="bg-info">
             <span>Выбрать</span>
           </div>
-        </label>
+        </div>
         <input type="text" class="form-input text_place" placeholder="Описание">
       </div>
       <div class="t-img-block">
-        <label for="add-img_t2" class="form-input image-input main-img-t">
-          <input type="file" id="add-img_t2"  accept="image/png, image/jpeg" class="hidden-input">
+        <div class="form-input image-input main-img-t" (click)="modalWin()">
           <span class="picture-txt">Загрузите фото</span>
           <div class="bg-info">
             <span>Выбрать</span>
           </div>
-        </label>
+        </div>
         <input type="text" class="form-input text_place" placeholder="Описание">
       </div>
       <div class="t-img-block">
-        <label for="add-img_t3" class="form-input image-input main-img-t">
-          <input type="file" id="add-img_t3"  accept="image/png, image/jpeg" class="hidden-input">
+        <div class="form-input image-input main-img-t" (click)="modalWin()">
           <span class="picture-txt">Загрузите фото</span>
           <div class="bg-info">
             <span>Выбрать</span>
           </div>
-        </label>
+        </div>
         <input type="text" class="form-input text_place" placeholder="Описание">
       </div>
     </div>
@@ -93,3 +87,4 @@
     <button class="header-button">Сохранить</button>
   </div>
 </div>
+<div class="app-library" *ngIf="modalWindow"></div>

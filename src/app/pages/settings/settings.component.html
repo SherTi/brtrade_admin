@@ -83,8 +83,10 @@
       </div>
     </div>
   </div>
-  <div class="form-btn-block">
+  <div class="form-btn-block" (click)="submit()">
     <button class="header-button">Сохранить</button>
   </div>
 </div>
-<div class="app-library" *ngIf="modalWindow"></div>
+<form [formGroup]="form">
+  <app-library formControlName="images" *ngIf="modalWindow" [(modalState)]="modalWindow"></app-library>
+</form>

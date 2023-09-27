@@ -1,2 +1,7 @@
-
 <router-outlet></router-outlet>
+
+<div class="message-box">
+  <div class="message-container" *ngFor="let m of messageBox" [ngClass]="{error: m.error}" @messageAnimation>
+    <span class="message-content">{{m.message}}</span>
+  </div>
+</div>

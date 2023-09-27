@@ -7,11 +7,13 @@ import { SingInComponent } from './pages/sing-in/sing-in.component';
 import { MainComponent } from './shared/layouts/main/main.component';
 import { AddItemComponent } from './pages/add-item/add-item.component';
 import { AddCategoriesComponent } from './pages/add-categories/add-categories.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApplicationsComponent } from './pages/applications/applications.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { LibraryComponent } from './shared/components/library/library.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,10 +29,13 @@ import { LibraryComponent } from './shared/components/library/library.component'
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

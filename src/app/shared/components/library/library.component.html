@@ -1,16 +1,16 @@
-<div class="modal-window-background">
+<div class="modal-window-background" (click)="closeModal($event)">
   <div class="modal-window">
     <div class="load">
       <h2 class="title-section">Библиотека</h2>
       <div class="block">
         <div class="block-items">
           <div class="img-block" *ngFor="let item of items" (click)="onClick(item)">
-            <img src="assets/img.png" alt="" class="img">
+            <img src="assets/img.png" alt="" class="img" title="name: {{item.name}}&#013;width: {{item.width}}, height: {{item.height}}&#013;size: {{item.size}}mb">
             <div class="check" *ngIf="item.selected">✓</div>
           </div>
         </div>
       </div>
-      <button class="btn-block" [disabled]="!active" (click)="submit()" [ngClass]="{activeBtn: active , noActiveBtn: !active}" >Добавить</button>
+      <button class="btn-block" [disabled]="!active" [ngClass]="{activeBtn: active , noActiveBtn: !active}" >Добавить</button>
     </div>
     <div class="upload">
       <h2 class="title-section">Загрузить</h2>

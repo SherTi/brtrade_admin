@@ -1,0 +1,23 @@
+.message-box {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}
+
+.message-container {
+  padding: 15px 25px;
+  border-radius: 16px;
+  background-color: #42a442;
+  max-width: 290px;
+  margin-bottom: 15px;
+}
+
+.message-content {
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.error {
+  background-color: #d03f3f;
+}

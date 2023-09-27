@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LibraryComponent} from "../../shared/components/library/library.component";
 
 @Component({
@@ -6,7 +6,7 @@ import {LibraryComponent} from "../../shared/components/library/library.componen
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
-export class AddItemComponent extends LibraryComponent{
+export class AddItemComponent implements OnInit {
 
   part: number | null = null;
   modalWindow:boolean = false
@@ -16,7 +16,9 @@ export class AddItemComponent extends LibraryComponent{
   modalWin() {
     this.modalWindow = !this.modalWindow
     console.log("click")
-    this.submit()
+  }
+
+  ngOnInit(): void {
   }
 
 }

@@ -1,27 +1,56 @@
-<div class="modal-window-background" (click)="closeModal($event)">
-  <div class="modal-window">
+<div class="t-img-block" (click)="openLibrary()" *ngIf="limit == 1">
+  <div class="form-input image-input main-img-t">
+    <span class="picture-txt" *ngIf="!value.length">{{placeholder}}</span>
+    <img src="http://localhost:4000{{value[0].src}}" alt="" class="single-image-input" *ngIf="value.length">
+    <div class="bg-info">
+      <span>Выбрать</span>
+    </div>
+  </div>
+</div>
+
+<div class="input-container" *ngIf="limit > 1">
+  <div class="form-input image-input text_place" (click)="openLibrary()">
+    <span class="picture-txt">Требуемый размер (462 x 382)</span>
+    <div class="bg-info">
+      <span>Выбрать</span>
+    </div>
+  </div>
+  <div class="preview-container">
+    <img src="http://localhost:4000{{val.src}}" alt="" class="preview-image" *ngFor="let val of value">
+  </div>
+</div>
+
+<div class="modal-window-background" (click)="closeModal($event)" *ngIf="isOpen">
+  <div class="modal-window" id="drop-area" (dragenter)="preventDefault($event)" (dragover)="preventDefault($event)" (dragleave)="preventDefault($event)" (drop)="dropImage($event)">
     <div class="load">
       <h2 class="title-section">Библиотека</h2>
       <div class="block">
         <div class="block-items">
+          <h4 *ngIf="!items.length" class="limit-heading">Тут пусто или не найдены изображения по размеру требованию!</h4>
           <div class="img-block" *ngFor="let item of items" (click)="onClick(item)">
-            <img src="assets/img.png" alt="" class="img" title="name: {{item.name}}&#013;width: {{item.width}}, height: {{item.height}}&#013;size: {{item.size}}mb">
+            <img src="http://localhost:4000{{item.src}}" alt="" class="img" title="width: {{item.width}}, height: {{item.height}}&#013;size: {{item.size}}">
             <div class="check" *ngIf="item.selected">✓</div>
           </div>
         </div>
       </div>
-      <button class="btn-block" [disabled]="!active" [ngClass]="{activeBtn: active , noActiveBtn: !active}" >Добавить</button>
+      <div class="actions">
+        <label for="file-input" class="btn-block activeBtn">
+          <input type="file" #imageInput id="file-input">
+          Загрузить
+        </label>
+        <button class="btn-block activeBtn" (click)="submit()">Добавить</button>
+      </div>
     </div>
-    <div class="upload">
-      <h2 class="title-section">Загрузить</h2>
-      <label for="add-img" class="form-input image-input add-img">
-        <input type="file" class="hidden-input" id="add-img">
-        <span class="picture-txt">Загрузить фото в библиотеку</span>
-        <div class="bg-info">
-          <span>Выбрать</span>
-        </div>
-      </label>
-      <button class="btn-block">Загрузить</button>
-    </div>
+<!--    <div class="upload">-->
+<!--      <h2 class="title-section">Загрузить</h2>-->
+<!--      <label for="add-img" class="form-input image-input add-img">-->
+<!--        <input type="file" class="hidden-input" id="add-img">-->
+<!--        <span class="picture-txt">Загрузить фото в библиотеку</span>-->
+<!--        <div class="bg-info">-->
+<!--          <span>Выбрать</span>-->
+<!--        </div>-->
+<!--      </label>-->
+<!--      <button class="btn-block">Загрузить</button>-->
+<!--    </div>-->
   </div>
 </div>

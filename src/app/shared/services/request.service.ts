@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import { ServerResponse } from '../../types';
 import { MessageStream } from '../streams/message.stream';
 import { v4 } from 'uuid';
+import { LoadingStream } from '../streams/loading.stream';
 
 @Injectable({ providedIn: 'root' })
 export class RequestService {
@@ -17,6 +18,7 @@ export class RequestService {
       headers['Authorization'] = `Bearer ${token}`;
     }
     return new Observable<ServerResponse<T>>((observer) => {
+      LoadingStream.loadingStatus = true;
       this.http
         .get<ServerResponse<T>>(`${environment.api}${url}`, {
           headers,
@@ -31,6 +33,7 @@ export class RequestService {
               });
             }
             observer.next(value);
+            LoadingStream.loadingStatus = false;
           },
           error: (e) => {
             console.log(e);
@@ -46,6 +49,7 @@ export class RequestService {
                 'Что-то пошло не так! Пожалуйста проверьте подключение к интернету!',
               data: null,
             });
+            LoadingStream.loadingStatus = false;
           },
         });
     });
@@ -58,6 +62,7 @@ export class RequestService {
       headers['Authorization'] = `Bearer ${token}`;
     }
     return new Observable<ServerResponse<T>>((observer) => {
+      LoadingStream.loadingStatus = true;
       this.http
         .post<ServerResponse<T>>(`${environment.api}${url}`, body, { headers })
         .subscribe({
@@ -70,6 +75,7 @@ export class RequestService {
               });
             }
             observer.next(value);
+            LoadingStream.loadingStatus = false;
           },
           error: (e) => {
             console.log(e);
@@ -85,6 +91,7 @@ export class RequestService {
                 'Что-то пошло не так! Пожалуйста проверьте подключение к интернету!',
               data: null,
             });
+            LoadingStream.loadingStatus = false;
           },
         });
     });

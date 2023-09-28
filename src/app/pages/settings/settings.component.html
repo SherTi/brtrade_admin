@@ -9,16 +9,11 @@
 <div class="page-content">
   <div class="form-container">
     <h2 class="title-section">Добавить фото сотрудников</h2>
-    <div class="form-input image-input text_place" (click)="modalWin()">
-      <span class="picture-txt">Требуемый размер (462 x 382)</span>
-      <div class="bg-info">
-        <span>Выбрать</span>
-      </div>
-    </div>
+    <app-library placeholder="Требуемый размер (462 x 382)" [limit]="200" [limitWidth]="960" [limitHeight]="1280"></app-library>
     <div class="form-block_setting">
       <div class="form-container w-50">
         <h2 class="title-section">Добавить сертификат</h2>
-        <div class="form-input image-input main-img-other" (click)="modalWin()">
+        <div class="form-input image-input main-img-other">
           <span class="picture-txt">Загрузите сертификат</span>
           <div class="bg-info">
             <span>Выбрать</span>
@@ -27,7 +22,7 @@
       </div>
       <div class="form-container w-50">
         <h2 class="title-section">Добавить логотип партнёров</h2>
-        <div class="form-input image-input main-img-other" (click)="modalWin()">
+        <div class="form-input image-input main-img-other">
           <span class="picture-txt">Загрузите логотип</span>
           <div class="bg-info">
             <span>Выбрать</span>
@@ -55,38 +50,20 @@
     <h2 class="title-section">Добавить фото в раздел "Мы поставляем"</h2>
     <div class="form-block-item">
       <div class="t-img-block">
-        <div class="form-input image-input main-img-t" (click)="modalWin()">
-          <span class="picture-txt">Загрузите фото</span>
-          <div class="bg-info">
-            <span>Выбрать</span>
-          </div>
-        </div>
+        <app-library placeholder="Загрузите изображение трактора"></app-library>
         <input type="text" class="form-input text_place" placeholder="Описание">
       </div>
       <div class="t-img-block">
-        <div class="form-input image-input main-img-t" (click)="modalWin()">
-          <span class="picture-txt">Загрузите фото</span>
-          <div class="bg-info">
-            <span>Выбрать</span>
-          </div>
-        </div>
+        <app-library placeholder="Загрузите изображение трактора"></app-library>
         <input type="text" class="form-input text_place" placeholder="Описание">
       </div>
       <div class="t-img-block">
-        <div class="form-input image-input main-img-t" (click)="modalWin()">
-          <span class="picture-txt">Загрузите фото</span>
-          <div class="bg-info">
-            <span>Выбрать</span>
-          </div>
-        </div>
+        <app-library placeholder="Загрузите изображение трактора"></app-library>
         <input type="text" class="form-input text_place" placeholder="Описание">
       </div>
     </div>
   </div>
-  <div class="form-btn-block" (click)="submit()">
+  <div class="form-btn-block">
     <button class="header-button">Сохранить</button>
   </div>
 </div>
-<form [formGroup]="form">
-  <app-library formControlName="images" *ngIf="modalWindow" [(modalState)]="modalWindow"></app-library>
-</form>

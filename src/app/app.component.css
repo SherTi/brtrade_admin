@@ -21,3 +21,34 @@
 .error {
   background-color: #d03f3f;
 }
+
+.loading_container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loading-box {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #ffffff;
+  border-radius: 50px;
+  border-right-color: transparent;
+  animation: loading_animation linear infinite 0.4s;
+}
+
+@keyframes loading_animation {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(359deg);
+  }
+}

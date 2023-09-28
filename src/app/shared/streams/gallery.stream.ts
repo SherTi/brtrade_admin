@@ -1,34 +1,14 @@
-import { Subject, Subscription } from 'rxjs';
-import { GalleryItem } from '../../types';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { GalleryItem, ServerResponse } from '../../types';
 import { Observer } from 'rxjs';
-import axios from 'axios';
+import { inject } from '@angular/core';
+import { RequestService } from '../services/request.service';
 
 export class GalleryStream {
   private static _subject: Subject<GalleryItem[]> = new Subject<
     GalleryItem[]
   >();
-  private static _gallery: GalleryItem[] = [
-    {
-      id: 'asdfasdf',
-      name: 'Тракторк',
-      width: 150,
-      height: 123,
-      src: '/assets/image.jpg',
-      size: 255,
-      createdAt: '1',
-      updatedAt: '1',
-    },
-    {
-      id: 'asdfasgr',
-      name: 'Тракторк',
-      width: 150,
-      height: 123,
-      src: '/assets/image.jpg',
-      size: 255,
-      createdAt: '2',
-      updatedAt: '2',
-    },
-  ];
+  private static _gallery: GalleryItem[] = [];
   static subscribe(
     observerOrNext?:
       | Partial<Observer<GalleryItem[]>>
@@ -44,7 +24,7 @@ export class GalleryStream {
     this._subject.next(value);
   }
 
-  static async init() {
-    const res = await axios.get('http://localhost:4000/api/');
+  static init(value: GalleryItem[]): void {
+    this.current = value;
   }
 }

@@ -1,5 +1,7 @@
 import {
   AfterContentChecked,
+  AfterContentInit,
+  afterNextRender,
   Component,
   OnDestroy,
   OnInit,
@@ -8,7 +10,7 @@ import {
 import { ActivationStart, Router, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MessageStream } from './shared/streams/message.stream';
-import { Message } from './types';
+import { GalleryItem, Message } from './types';
 import {
   animate,
   animation,
@@ -16,6 +18,11 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { LoadingStream } from './shared/streams/loading.stream';
+import { GalleryStream } from './shared/streams/gallery.stream';
+import { RequestService } from './shared/services/request.service';
+import axios from 'axios';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -57,14 +64,17 @@ import {
   ],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  constructor(private client: RequestService) {}
+
   @ViewChild(RouterOutlet) outlet?: RouterOutlet;
-  constructor(private router: Router) {}
   title = 'brtrade_admin';
-  subscription?: Subscription;
+  messageSubscription?: Subscription;
+  loadingSubscription?: Subscription;
   messageBox: Message[] = [];
+  isLoading: boolean = false;
 
   ngOnInit(): void {
-    this.subscription = MessageStream.subscribe((value) => {
+    this.messageSubscription = MessageStream.subscribe((value) => {
       this.messageBox.push(value);
       setTimeout(() => {
         this.messageBox = this.messageBox.filter((v) => {
@@ -72,9 +82,26 @@ export class AppComponent implements OnInit, OnDestroy {
         });
       }, 5000);
     });
+    this.isLoading = LoadingStream.loadingStatus;
+    this.loadingSubscription = LoadingStream.subscribe((value) => {
+      this.isLoading = value;
+    });
+    const auth = localStorage.getItem('authorization');
+    if (auth) {
+      axios
+        .get(`${environment.api}/api/gallery/get`, {
+          headers: { Authorization: `Bearer ${auth}` },
+        })
+        .then((res) => {
+          if (res.data.status) {
+            GalleryStream.init(res.data.data);
+          }
+        });
+    }
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    this.messageSubscription?.unsubscribe();
+    this.loadingSubscription?.unsubscribe();
   }
 }

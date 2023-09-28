@@ -139,6 +139,21 @@
 .form-input:focus{
   border: 2px solid #0061E7;
 }
+
+.image-input{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffffb3!important;
+  transition: all .3s;
+  position: relative;
+  padding: 0!important;
+}
+
+.image-input:hover .bg-info {
+  opacity: 1;
+}
+
 .switch{
   width: 80px;
   background: #222028;

@@ -1,9 +1,8 @@
 export interface GalleryItem {
   id: string;
-  name: string;
   width: number;
   height: number;
-  size: number;
+  size: string;
   src: string;
   selected?: boolean;
   updatedAt: string;

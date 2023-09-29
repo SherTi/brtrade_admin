@@ -1,5 +1,6 @@
 export interface GalleryItem {
   id: string;
+  name: string;
   width: number;
   height: number;
   size: string;
@@ -19,4 +20,13 @@ export interface Message {
   id: string;
   message: string;
   error: boolean;
+}
+
+export interface CategoryItem {
+  id: number;
+  name: string;
+  image_id?: string;
+  tractor: boolean;
+  createdAt: string;
+  updatedAt: string;
 }

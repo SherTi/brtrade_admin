@@ -1,16 +1,8 @@
-import {
-  AfterContentChecked,
-  AfterContentInit,
-  afterNextRender,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import { ActivationStart, Router, RouterOutlet } from '@angular/router';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MessageStream } from './shared/streams/message.stream';
-import { GalleryItem, Message } from './types';
+import { Message } from './types';
 import {
   animate,
   animation,
@@ -21,8 +13,7 @@ import {
 import { LoadingStream } from './shared/streams/loading.stream';
 import { GalleryStream } from './shared/streams/gallery.stream';
 import { RequestService } from './shared/services/request.service';
-import axios from 'axios';
-import { environment } from '../environments/environment';
+import { getUtil } from './shared/services/request.util';
 
 @Component({
   selector: 'app-root',
@@ -86,18 +77,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.loadingSubscription = LoadingStream.subscribe((value) => {
       this.isLoading = value;
     });
-    const auth = localStorage.getItem('authorization');
-    if (auth) {
-      axios
-        .get(`${environment.api}/api/gallery/get`, {
-          headers: { Authorization: `Bearer ${auth}` },
-        })
-        .then((res) => {
-          if (res.data.status) {
-            GalleryStream.init(res.data.data);
-          }
-        });
-    }
+    getUtil<any>('/api/gallery/get').subscribe((res) => {
+      if (res.status) {
+        GalleryStream.init(res.data);
+      }
+    });
   }
 
   ngOnDestroy(): void {

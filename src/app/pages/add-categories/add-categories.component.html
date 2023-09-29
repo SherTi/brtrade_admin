@@ -2,10 +2,30 @@
   <h1 class="header-title">{{textTitle}}</h1>
 </div>
 <div class="page-content">
-  <div class="form-container">
-    <input type="text" class="form-input text_place" placeholder="Название категорий">
-    <div class="form-btn-block">
-      <button class="header-button">Добавить</button>
-    </div>
+  <div class="category">
+    <h2 class="category-head">КАТАЛОГ ТЕХНИКИ</h2>
+    <ul class="sub-category-list">
+      <li class="sub-category-item" *ngFor="let tractor of tractors">{{tractor.name}}</li>
+    </ul>
+    <button class="category-submit header-button" (click)="openModal('tractor')">Добавить</button>
+  </div>
+  <div class="category">
+    <h2 class="category-head">КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ</h2>
+    <ul class="sub-category-list">
+      <li class="sub-category-item" *ngFor="let spare of spares">{{spare.name}}</li>
+    </ul>
+    <button class="category-submit header-button" (click)="openModal('spare')">Добавить</button>
+  </div>
+</div>
+<div class="create-category-modal" *ngIf="isOpen" (click)="closeModal($event)">
+  <div class="modal-body">
+    <h3 class="modal-header">Добавить категорию в {{type === 'tractor' ? 'КАТАЛОГ ТЕХНИКИ' : 'КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ'}}</h3>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <input type="text" placeholder="Имя категории" class="form-input modal-input" formControlName="name">
+      <div class="library-container">
+        <app-library placeholder="Выберите изоражение для категории" formControlName="image" [height]="300" [width]="275" [limitWidth]="275" [limitHeight]="300"></app-library>
+      </div>
+      <button class="modal-submit" [disabled]="form.invalid">Добавить</button>
+    </form>
   </div>
 </div>

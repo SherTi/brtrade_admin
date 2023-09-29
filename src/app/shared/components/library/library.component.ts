@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { GalleryItem } from '../../../types';
 import { GalleryStream } from '../../streams/gallery.stream';
 import { RequestService } from '../../services/request.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-library',
@@ -25,12 +26,17 @@ export class LibraryComponent
   @Input() placeholder: string = 'Загрузите фото';
   @Input() limitWidth?: number;
   @Input() limitHeight?: number;
+  @Input() height: number = 400;
+  @Input() width?: number;
 
   constructor(private client: RequestService) {}
 
   isOpen: boolean = false;
 
   value: GalleryItem[] = [];
+
+  dropInfo: boolean = false;
+  api = environment.api;
   onChange: (value: GalleryItem[]) => void = () => {};
   onTouched: (val: boolean) => void = () => {};
 
@@ -59,14 +65,8 @@ export class LibraryComponent
         i.selected = false;
       }
       item.selected = true;
-      this.value = this.items.filter((i) => {
-        return !!i.selected;
-      });
     } else if (filtered.length < this.limit) {
       item.selected = true;
-      this.value = this.items.filter((i) => {
-        return !!i.selected;
-      });
     }
   }
 
@@ -74,6 +74,9 @@ export class LibraryComponent
     if (
       (event.target as Element).classList.contains('modal-window-background')
     ) {
+      for (const i of this.items) {
+        i.selected = false;
+      }
       this.isOpen = false;
     }
   }
@@ -101,6 +104,7 @@ export class LibraryComponent
       if (width && height) {
         this.items.push({
           id: i.id,
+          name: i.name,
           size: i.size,
           width: i.width,
           height: i.height,
@@ -128,6 +132,7 @@ export class LibraryComponent
         if (width && height) {
           result.push({
             id: i.id,
+            name: i.name,
             size: i.size,
             width: i.width,
             height: i.height,
@@ -153,9 +158,14 @@ export class LibraryComponent
     }
   }
 
-  preventDefault(event: Event) {
+  preventDefault(event: Event, type: string) {
     event.preventDefault();
     event.stopPropagation();
+    if (type == 'over' && !this.dropInfo) {
+      this.dropInfo = true;
+    } else if (type == 'leave') {
+      this.dropInfo = false;
+    }
   }
 
   async sortImages(files: FileList) {
@@ -206,12 +216,48 @@ export class LibraryComponent
   dropImage(event: DragEvent) {
     event.preventDefault();
     event.stopPropagation();
-    // console.log(event.dataTransfer!.files);
+    this.dropInfo = false;
     this.sortImages(event.dataTransfer!.files);
   }
 
   submit() {
+    this.value = this.items.filter((i) => {
+      return !!i.selected;
+    });
     this.onChange(this.value);
     this.isOpen = false;
+  }
+
+  async uploadImages(event: Event) {
+    const input: HTMLInputElement = event.target as HTMLInputElement;
+    if (input.files) {
+      const form = new FormData();
+      const sizes: any[] = [];
+      for (let i = 0; i < input.files.length; i++) {
+        const file: File = input.files[i];
+        if (
+          file.type == 'image/png' ||
+          file.type == 'image/jpg' ||
+          file.type == 'image/jpeg' ||
+          file.type == 'image/svg+xml' ||
+          file.type == 'image/svg'
+        ) {
+          const val = await this.getImageSize(file);
+          form.append('images', file);
+          sizes.push(val);
+        }
+      }
+      form.append('sizes', JSON.stringify(sizes));
+      this.client
+        .post<GalleryItem[]>('/api/gallery/create', form)
+        .subscribe((res) => {
+          if (res.status) {
+            GalleryStream.current = [...GalleryStream.current, ...res.data!];
+            const empty = document.createElement('input');
+            empty.type = 'file';
+            input.files = empty.files;
+          }
+        });
+    }
   }
 }

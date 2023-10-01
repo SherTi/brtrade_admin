@@ -13,13 +13,13 @@
       </div>
       <div class="category-form" *ngIf="type">
         <select class="form-input form-select" formControlName="category_id">
-          <option [value]="null" selected hidden>Категория</option>
+          <option [value]="null" selected hidden>Выберите под-категорию</option>
           <option value="{{cat.id}}" *ngFor="let cat of type == 'tractor' ? tractors : spares">{{cat.name}}</option>
         </select>
       </div>
       <div class="tractor-form" *ngIf="type">
         <div class="first-form">
-          <div class="add_img" >
+          <div class="add_img">
             <app-library placeholder="Требуемый размер (462 x 382)" [limitWidth]="462" [limitHeight]="382" formControlName="main_image"></app-library>
             <div class="mini-img-block">
               <app-library placeholder="Требуемый размер (140 x 116)" [width]="140" [height]="116" [limitWidth]="140" [limitHeight]="116" formControlName="st_image"></app-library>
@@ -37,34 +37,17 @@
           </div>
         </div>
         <textarea class="form-input textarea_deck" placeholder="Описание" formControlName="desc"></textarea>
-        <div class="second-form" *ngIf="type == 'tractor'">
-          <h2 class="title-section">Двигатель</h2>
-          <div class="form-block" *ngFor="let motor of form.get('motor')!.value">
-            <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики" [formControl]="motor.key">
-            <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение" [formControl]="motor.value">
-          </div>
-          <div class="add-place-form form-input text_from_h" (click)="createField('motor')">+</div>
-        </div>
-        <div class="second-form" *ngIf="type == 'tractor'">
-          <h2 class="title-section">Трансмиссия</h2>
-          <div class="form-block" *ngFor="let trans of form.get('trans')!.value">
-            <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики" [formControl]="trans.key">
-            <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение" [formControl]="trans.value">
-          </div>
-          <div class="add-place-form form-input text_from_h" (click)="createField('trans')">+</div>
-        </div>
-        <div class="second-form" *ngIf="type == 'tractor'">
-          <h2 class="title-section">Стандартная комплектация</h2>
-          <input type="text" class="form-input text_from_h" placeholder="Значение" *ngFor="let equipment of form.get('equipment')!.value" [formControl]="equipment">
-          <div class="add-place-form form-input text_from_h" (click)="createField('equipment')">+</div>
-        </div>
-        <div class="second-form" *ngIf="type == 'spare'">
-          <h2 class="title-section">Характеристики</h2>
-          <div class="form-block" *ngFor="let char of form.get('chars')!.value">
-            <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики" [formControl]="char.key">
-            <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение" [formControl]="char.value">
-          </div>
-          <div class="add-place-form form-input text_from_h" (click)="createField('chars')">+</div>
+        <div class="second-form">
+          <h1>Характеристики</h1>
+          <ng-container *ngFor="let character of form.get('chars')!.value">
+            <input type="text" class="form-input text_form_title text_from_h" placeholder="Название раздела характеристики" [formControl]="character.name">
+            <div class="form-block" *ngFor="let char of character.characters">
+              <input type="text" class="form-input text_form_title text_from_h" placeholder="Название характеристики" [formControl]="char.key">
+              <input type="text" class="form-input text_form_title text_from_h" placeholder="Значение" [formControl]="char.value">
+            </div>
+            <div class="add-place-form form-input text_from_h" (click)="createCharField(character.id)">+</div>
+          </ng-container>
+          <button class="header-button w-100" type="button" (click)="createCharacterMain()">Добавить раздел характеристики</button>
         </div>
         <div class="form-btn-block">
           <button class="header-button" type="submit" [disabled]="form.invalid">Добавить</button>

@@ -6,9 +6,15 @@ import { RequestService } from '../../shared/services/request.service';
 import { MessageStream } from '../../shared/streams/message.stream';
 import { v4 } from 'uuid';
 
-interface Characters {
+interface CharacterItem {
   key: FormControl<string | null>;
   value: FormControl<string | null>;
+}
+
+interface Characters {
+  id: string;
+  name: FormControl<string | null>;
+  characters: CharacterItem[];
 }
 
 interface ProductForm {
@@ -18,11 +24,8 @@ interface ProductForm {
   sd_image: FormControl<GalleryItem[] | null>;
   th_image: FormControl<GalleryItem[] | null>;
   name: FormControl<string | null>;
-  main_chars: FormControl<Characters[] | null>;
+  main_chars: FormControl<CharacterItem[] | null>;
   desc: FormControl<string | null>;
-  motor: FormControl<Characters[] | null>;
-  trans: FormControl<Characters[] | null>;
-  equipment: FormControl<FormControl<string | null>[] | null>;
   chars: FormControl<Characters[] | null>;
   category_id: FormControl<string | null>;
 }
@@ -45,7 +48,7 @@ export class AddItemComponent implements OnInit {
     name: new FormControl<string | null>(null, {
       validators: [Validators.required],
     }),
-    main_chars: new FormControl<Characters[] | null>([
+    main_chars: new FormControl<CharacterItem[] | null>([
       {
         key: new FormControl<string | null>(null),
         value: new FormControl<string | null>(null),
@@ -54,27 +57,7 @@ export class AddItemComponent implements OnInit {
     desc: new FormControl<string | null>(null, {
       validators: [Validators.required],
     }),
-    motor: new FormControl<Characters[] | null>([
-      {
-        key: new FormControl<string | null>(null),
-        value: new FormControl<string | null>(null),
-      },
-    ]),
-    trans: new FormControl<Characters[] | null>([
-      {
-        key: new FormControl<string | null>(null),
-        value: new FormControl<string | null>(null),
-      },
-    ]),
-    equipment: new FormControl<FormControl<string | null>[] | null>([
-      new FormControl<string | null>(null),
-    ]),
-    chars: new FormControl<Characters[] | null>([
-      {
-        key: new FormControl<string | null>(null),
-        value: new FormControl<string | null>(null),
-      },
-    ]),
+    chars: new FormControl<Characters[] | null>([]),
     category_id: new FormControl<string | null>(null, {
       validators: [Validators.required],
     }),
@@ -101,7 +84,7 @@ export class AddItemComponent implements OnInit {
     this.form.get('category_id')?.setValue(null);
   }
 
-  createField(type: 'main_chars' | 'motor' | 'trans' | 'equipment' | 'chars') {
+  createField(type: 'main_chars') {
     switch (type) {
       case 'main_chars':
         this.form.get('main_chars')?.setValue([
@@ -112,41 +95,33 @@ export class AddItemComponent implements OnInit {
           },
         ]);
         break;
-      case 'motor':
-        this.form.get('motor')?.setValue([
-          ...this.form.get('motor')!.value!,
-          {
-            key: new FormControl(null),
-            value: new FormControl(null),
-          },
-        ]);
-        break;
-      case 'trans':
-        this.form.get('trans')?.setValue([
-          ...this.form.get('trans')!.value!,
-          {
-            key: new FormControl(null),
-            value: new FormControl(null),
-          },
-        ]);
-        break;
-      case 'equipment':
-        this.form
-          .get('equipment')
-          ?.setValue([
-            ...this.form.get('equipment')!.value!,
-            new FormControl<string | null>(null),
-          ]);
-        break;
-      case 'chars':
-        this.form.get('chars')?.setValue([
-          ...this.form.get('chars')!.value!,
-          {
-            key: new FormControl(null),
-            value: new FormControl(null),
-          },
-        ]);
-        break;
+    }
+  }
+
+  createCharacterMain() {
+    this.form.get('chars')?.setValue([
+      ...this.form.get('chars')?.value!,
+      ...[
+        {
+          id: v4(),
+          name: new FormControl(),
+          characters: [],
+        },
+      ],
+    ]);
+  }
+
+  createCharField(id: string) {
+    const val = this.form.get('chars')?.value;
+    if (val) {
+      for (const char of val) {
+        if (id == char.id) {
+          char.characters.push({
+            key: new FormControl(),
+            value: new FormControl(),
+          });
+        }
+      }
     }
   }
 
@@ -176,25 +151,7 @@ export class AddItemComponent implements OnInit {
         },
       ],
       desc: null,
-      motor: [
-        {
-          key: new FormControl<string | null>(null),
-          value: new FormControl<string | null>(null),
-        },
-      ],
-      trans: [
-        {
-          key: new FormControl<string | null>(null),
-          value: new FormControl<string | null>(null),
-        },
-      ],
-      equipment: [new FormControl<string | null>(null)],
-      chars: [
-        {
-          key: new FormControl<string | null>(null),
-          value: new FormControl<string | null>(null),
-        },
-      ],
+      chars: [],
       category_id: null,
     });
   }
@@ -210,9 +167,6 @@ export class AddItemComponent implements OnInit {
     ) {
       const main_chars: any[] = [];
       const chars: any[] = [];
-      const motor: any[] = [];
-      const trans: any[] = [];
-      const equipment: string[] = [];
       for (const m_char of this.form.get('main_chars')?.value!) {
         if (m_char.key.value && m_char.value.value) {
           main_chars.push({
@@ -222,32 +176,25 @@ export class AddItemComponent implements OnInit {
         }
       }
       for (const char of this.form.get('chars')?.value!) {
-        if (char.key.value && char.value.value) {
+        const characters: any[] = [];
+        for (const ch of char.characters) {
+          if (
+            ch.key.value &&
+            ch.key.value?.trim() &&
+            ch.value.value &&
+            ch.value.value?.trim()
+          ) {
+            characters.push({
+              key: ch.key.value,
+              value: ch.value.value,
+            });
+          }
+        }
+        if (characters.length && char.name.value && char.name.value?.trim()) {
           chars.push({
-            key: char.key.value,
-            value: char.value.value,
+            name: char.name.value,
+            characters,
           });
-        }
-      }
-      for (const m of this.form.get('motor')?.value!) {
-        if (m.key.value && m.value.value) {
-          motor.push({
-            key: m.key.value,
-            value: m.value.value,
-          });
-        }
-      }
-      for (const t of this.form.get('trans')?.value!) {
-        if (t.key.value && t.value.value) {
-          trans.push({
-            key: t.key.value,
-            value: t.value.value,
-          });
-        }
-      }
-      for (const t of this.form.get('equipment')?.value!) {
-        if (t.value && t.value?.trim()) {
-          equipment.push(t.value);
         }
       }
       const body = {
@@ -265,9 +212,6 @@ export class AddItemComponent implements OnInit {
           ? this.form.get('th_image')!.value![0].id
           : undefined,
         desc: this.form.get('desc')?.value,
-        motor,
-        trans,
-        equipment,
         chars,
         category_id: this.form.get('category_id')?.value,
       };

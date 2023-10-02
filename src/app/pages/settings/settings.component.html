@@ -7,63 +7,64 @@
   </div>
 </div>
 <div class="page-content">
-  <div class="form-container">
-    <h2 class="title-section">Добавить фото сотрудников</h2>
-    <app-library placeholder="Требуемый размер (462 x 382)" [limit]="200"></app-library>
-    <div class="form-block_setting">
-      <div class="form-container w-50">
-        <h2 class="title-section">Добавить сертификат</h2>
-        <div class="form-input image-input main-img-other">
-          <span class="picture-txt">Загрузите сертификат</span>
-          <div class="bg-info">
-            <span>Выбрать</span>
-          </div>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-container">
+      <h2 class="title-section">Добавить фото сотрудников</h2>
+      <app-library placeholder="Требуемый размер (1343 x 1110)px" [limitWidth]="1343" [limitHeight]="1110" [limit]="4" formControlName="staff"></app-library>
+      <div class="form-block_setting">
+        <div class="form-container w-50">
+          <h2 class="title-section">Добавить сертификат</h2>
+          <app-library placeholder="Требуемый размер (794x1125)px" [limitWidth]="794" [limitHeight]="1125" [limit]="200" formControlName="certificates"></app-library>
         </div>
-      </div>
-      <div class="form-container w-50">
-        <h2 class="title-section">Добавить логотип партнёров</h2>
-        <div class="form-input image-input main-img-other">
-          <span class="picture-txt">Загрузите логотип</span>
-          <div class="bg-info">
-            <span>Выбрать</span>
-          </div>
+        <div class="form-container w-50">
+          <h2 class="title-section">Добавить логотип партнёров</h2>
+          <app-library placeholder="Требуемый размер (176x150)px" [limitWidth]="176" [limitHeight]="150" [limit]="200" formControlName="partners"></app-library>
         </div>
       </div>
     </div>
-  </div>
-  <div class="form-container">
-    <div class="form-block_setting">
-      <div class="form-block-1">
-        <h2 class="title-section">Добавить ссылки на соц сеть</h2>
-        <input type="text" class="form-input text_place mar-b-20" placeholder="Введите ссылку на Телеграм">
-        <input type="text" class="form-input text_place mar-b-20" placeholder="Введите ссылку на Facebook">
-        <input type="text" class="form-input text_place" placeholder="Введите ссылку на Instagram">
-      </div>
-      <div class="form-block-1">
-        <h2 class="title-section">Добавить номер телефона</h2>
-        <input type="text" class="form-input text_place mar-b-20" placeholder="Номер телефона">
-        <input type="text" class="form-input text_place mar-b-20" placeholder="Номер телефона">
-      </div>
-    </div>
-  </div>
-  <div class="form-container">
-    <h2 class="title-section">Добавить фото в раздел "Мы поставляем"</h2>
-    <div class="form-block-item">
-      <div class="t-img-block">
-        <app-library placeholder="Загрузите изображение трактора"></app-library>
-        <input type="text" class="form-input text_place" placeholder="Описание">
-      </div>
-      <div class="t-img-block">
-        <app-library placeholder="Загрузите изображение трактора"></app-library>
-        <input type="text" class="form-input text_place" placeholder="Описание">
-      </div>
-      <div class="t-img-block">
-        <app-library placeholder="Загрузите изображение трактора"></app-library>
-        <input type="text" class="form-input text_place" placeholder="Описание">
+    <div class="form-container">
+      <div class="form-block_setting">
+        <div class="form-block-1">
+          <h2 class="title-section">Добавить ссылки на соц сеть</h2>
+          <input type="text" class="form-input text_place mar-b-20" placeholder="Введите ссылку на Телеграм" formControlName="telegram">
+          <input type="text" class="form-input text_place mar-b-20" placeholder="Введите ссылку на Facebook" formControlName="facebook">
+          <input type="text" class="form-input text_place" placeholder="Введите ссылку на Instagram" formControlName="instagram">
+        </div>
+        <div class="form-block-1">
+          <h2 class="title-section">Добавить номер телефона</h2>
+          <input type="text" class="form-input text_place mar-b-20" placeholder="Номер телефона" formControlName="phone_1">
+          <input type="text" class="form-input text_place mar-b-20" placeholder="Номер телефона" formControlName="phone_2">
+        </div>
       </div>
     </div>
-  </div>
-  <div class="form-btn-block">
-    <button class="header-button">Сохранить</button>
-  </div>
+    <div class="form-container">
+      <h2 class="title-section">Добавить фото в раздел "Мы поставляем"</h2>
+      <div class="form-block-item">
+        <div class="t-img-block">
+          <app-library placeholder="Требуемый размер (370 x 400)px" [limitWidth]="370" [limitHeight]="400" formControlName="image_1"></app-library>
+          <select class="form-input text_place cursor-p" formControlName="cat_1" (change)="selectChangeHandler()">
+            <option value="null" hidden selected>Выберите категорию</option>
+            <option [value]="cat.id" [disabled]="cat.selected" [hidden]="cat.selected" *ngFor="let cat of categories">{{cat.name}}</option>
+          </select>
+        </div>
+        <div class="t-img-block">
+          <app-library placeholder="Требуемый размер (370 x 400)px" [limitWidth]="370" [limitHeight]="400" formControlName="image_2"></app-library>
+          <select class="form-input text_place cursor-p" formControlName="cat_2" (change)="selectChangeHandler()">
+            <option value="null" hidden selected>Выберите категорию</option>
+            <option [value]="cat.id" [disabled]="cat.selected" [hidden]="cat.selected" *ngFor="let cat of categories">{{cat.name}}</option>
+          </select>
+        </div>
+        <div class="t-img-block">
+          <app-library placeholder="Требуемый размер (370 x 400)px" [limitWidth]="370" [limitHeight]="400" formControlName="image_3"></app-library>
+          <select class="form-input text_place cursor-p" formControlName="cat_3" (change)="selectChangeHandler()">
+            <option value="null" hidden selected>Выберите категорию</option>
+            <option [value]="cat.id" [disabled]="cat.selected" [hidden]="cat.selected" *ngFor="let cat of categories">{{cat.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-btn-block">
+      <button class="header-button" type="submit">Сохранить</button>
+    </div>
+  </form>
 </div>

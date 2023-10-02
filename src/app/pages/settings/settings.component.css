@@ -32,6 +32,10 @@
   color: #fff;
   transition: all .3s;
 }
+
+.cursor-p {
+  cursor: pointer;
+}
 .image-input{
   display: flex;
   align-items: center;

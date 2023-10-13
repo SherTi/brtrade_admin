@@ -11,18 +11,11 @@
            <span class="user-req-text">E-mail адресс</span>
          </div>
       </li>
-      <li class="row-req">
+      <li class="row-req" *ngFor="let a of applications">
         <div class="user-req">
-          <span class="user-req-text">John</span>
-          <span class="user-req-text">+092 31 576 45 04</span>
-          <span class="user-req-text">john@gmail.com</span>
-        </div>
-      </li>
-      <li class="row-req">
-        <div class="user-req">
-          <span class="user-req-text">Eva</span>
-          <span class="user-req-text">+092 31 576 45 04</span>
-          <span class="user-req-text">eva@gmail.com</span>
+          <span class="user-req-text">{{a.name}}</span>
+          <span class="user-req-text">{{a.phone}}</span>
+          <span class="user-req-text">{{a.mail}}</span>
         </div>
       </li>
     </ul>

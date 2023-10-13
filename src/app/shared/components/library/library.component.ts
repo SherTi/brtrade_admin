@@ -260,4 +260,11 @@ export class LibraryComponent
         });
     }
   }
+
+  delete(val: GalleryItem) {
+    this.value = this.value.filter((v) => {
+      return v.id !== val.id;
+    });
+    this.onChange(this.value);
+  }
 }

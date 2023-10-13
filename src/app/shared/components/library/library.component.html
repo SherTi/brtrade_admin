@@ -16,7 +16,10 @@
     </div>
   </div>
   <div class="preview-container">
-    <img src="{{api}}{{val.src}}" alt="" class="preview-image" *ngFor="let val of value">
+    <div class="preview-box" *ngFor="let val of value">
+      <img src="{{api}}{{val.src}}" alt="" class="preview-image">
+      <button class="preview-delete" title="Удалить" (click)="delete(val)">-</button>
+    </div>
   </div>
 </div>
 

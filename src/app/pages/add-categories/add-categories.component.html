@@ -5,7 +5,31 @@
   <div class="category">
     <h2 class="category-head">КАТАЛОГ ТЕХНИКИ</h2>
     <ul class="sub-category-list">
-      <li class="sub-category-item" *ngFor="let tractor of tractors">{{tractor.name}}</li>
+      <li class="sub-category-item"
+          *ngFor="let tractor of tractors">{{tractor.name}}
+          <div (click)="subCategory = !subCategory" class="category-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="sub-category-icon">
+              <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+            </svg>
+          </div>
+          <div>
+            <ul class="sub-category-item-s" *ngIf="subCategory">
+              <li class="sub-category-item font-size" (click)="subCategorySub = !subCategorySub">
+                <div (click)="subCategorySub = !subCategorySub" class="category-icon" @listCategory>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="sub-category-icon">
+                    <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+                  </svg>
+                </div>
+                Под-категория
+                <ul class="sub-category-item-s" *ngIf="subCategorySub">
+                  <li class="sub-category-item font-size" >
+                    Под-под-категория
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+      </li>
     </ul>
     <button class="category-submit header-button" (click)="openModal('tractor')">Добавить</button>
   </div>

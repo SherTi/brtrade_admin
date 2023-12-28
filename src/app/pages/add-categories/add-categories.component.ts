@@ -3,11 +3,37 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoryItem, GalleryItem } from '../../types';
 import { RequestService } from '../../shared/services/request.service';
 import { getUtil } from '../../shared/services/request.util';
+import {animate, animation, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-add-categories',
   templateUrl: './add-categories.component.html',
   styleUrls: ['./add-categories.component.css'],
+  // animations: [
+  //   trigger('listCategory', [
+  //     transition(':enter', [
+  //       animation([
+  //         style({
+  //           transform: 'translateX(-100%)',
+  //         }),
+  //         animate('0.2s', style({
+  //           transform: 'translateX(0)',
+  //         }
+  //         )),
+  //       ])
+  //     ])
+  //   ]),
+  //   transition(':leave', [
+  //     animation([
+  //       style({
+  //         transform: 'translateX(0)'
+  //       }),
+  //       animate('0.2', style({
+  //         transform:'translateX(-100%)'
+  //       }))
+  //     ])
+  //   ])
+  // ]
 })
 export class AddCategoriesComponent implements OnInit {
   constructor(private client: RequestService) {}
@@ -26,7 +52,8 @@ export class AddCategoriesComponent implements OnInit {
   isOpen: boolean = false;
   tractors: CategoryItem[] = [];
   spares: CategoryItem[] = [];
-
+  subCategory: boolean = false
+  subCategorySub:boolean = false
   get type(): string {
     return this.form.get('type')!.value;
   }

@@ -14,6 +14,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
 import { LibraryComponent } from './shared/components/library/library.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CategoryComponent } from './shared/components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SettingsComponent,
     CatalogComponent,
     LibraryComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

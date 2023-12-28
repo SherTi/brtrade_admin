@@ -52,8 +52,6 @@ export class AddCategoriesComponent implements OnInit {
   isOpen: boolean = false;
   tractors: CategoryItem[] = [];
   spares: CategoryItem[] = [];
-  subCategory: boolean = false
-  subCategorySub:boolean = false
   get type(): string {
     return this.form.get('type')!.value;
   }

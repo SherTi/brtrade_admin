@@ -1,0 +1,31 @@
+.sub-category-item {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.category-icon{
+  position: absolute;
+  right: 40px;
+}
+.sub-category-icon{
+  width: 15px;
+  height: 15px;
+  fill: #ffffff;
+}
+.sub-category-item-s{
+  margin-top: 10px;
+}
+.sub-category-item {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+}
+
+

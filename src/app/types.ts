@@ -28,6 +28,7 @@ export interface CategoryItem {
   image_id?: string;
   tractor: boolean;
   selected?: boolean;
+  is_open?: boolean;
   createdAt: string;
   updatedAt: string;
 }

@@ -1,7 +1,7 @@
 <div class="t-img-block" (click)="openLibrary()" *ngIf="limit == 1">
   <div class="form-input image-input main-img-t" [style]="{height: height.toString() + 'px', width: width ? width.toString() + 'px' : '100%'}">
-    <span class="picture-txt" *ngIf="!value.length">{{placeholder}}</span>
-    <img src="{{api}}{{value[0].src}}" alt="" class="single-image-input" *ngIf="value.length">
+    <span class="picture-txt" *ngIf="value && !value.length">{{placeholder}}</span>
+    <img src="{{api}}{{value[0].src}}" alt="" class="single-image-input" *ngIf="value && value.length">
     <div class="bg-info">
       <span>Выбрать</span>
     </div>

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { ServerResponse } from '../../types';
 import { Router } from '@angular/router';
 import { RequestService } from '../../shared/services/request.service';
 

@@ -5,8 +5,8 @@
   <div class="category">
     <h2 class="category-head">КАТАЛОГ ТЕХНИКИ</h2>
     <ul class="sub-category-list">
-      <li class="sub-category-item">
-        <div class="app-category" *ngFor="let tractor of tractors; index as i" [category]="tractor" [hasSubCategory]="i % 2 == 0"></div>
+      <li class="sub-category-item" *ngFor="let tractor of tractors; index as i">
+        <div class="app-category" [category]="tractor" type="tractor" [hasSubCategory]="!!tractor.sub_categories && !!tractor.sub_categories.length"></div>
       </li>
     </ul>
     <button class="category-submit header-button" (click)="openModal('tractor')">Добавить</button>
@@ -14,7 +14,9 @@
   <div class="category">
     <h2 class="category-head">КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ</h2>
     <ul class="sub-category-list">
-      <li class="sub-category-item" *ngFor="let spare of spares">{{spare.name}}</li>
+      <li class="sub-category-item" *ngFor="let spare of spares; index as i">
+        <div class="app-category" [category]="spare" type="spare" [hasSubCategory]="!!spare.sub_categories && !!spare.sub_categories.length" (onChanged)="onChangedCategories($event)"></div>
+      </li>
     </ul>
     <button class="category-submit header-button" (click)="openModal('spare')">Добавить</button>
   </div>
@@ -24,6 +26,10 @@
     <h3 class="modal-header">Добавить категорию в {{type === 'tractor' ? 'КАТАЛОГ ТЕХНИКИ' : 'КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ'}}</h3>
     <form [formGroup]="form" (ngSubmit)="submitForm()">
       <input type="text" placeholder="Имя категории" class="form-input modal-input" formControlName="name">
+      <input type="text" placeholder="Title для CEO" class="form-input modal-input" formControlName="title">
+      <textarea type="text" placeholder="Description для CEO" class="form-input modal-input" formControlName="description"></textarea>
+      <input type="text" placeholder="Keywords для CEO" class="form-input modal-input" formControlName="keywords">
+      <input type="number" placeholder="Порядковый номер" class="form-input modal-input" formControlName="index">
       <div class="library-container">
         <app-library placeholder="Выберите изоражение для категории" formControlName="image" [height]="300" [width]="275" [limitWidth]="275" [limitHeight]="300"></app-library>
       </div>

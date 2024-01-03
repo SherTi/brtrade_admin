@@ -1,13 +1,49 @@
-<div class="sub-category-item" (click)="toggleSubCategory()">
-  <span>{{category?.name}}</span>
-  <div class="category-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="sub-category-icon">
-      <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+<div class="sub-category-item click-{{category?.id}}" (click)="toggleSubCategory($event, category!.id)">
+  <span class="cat-name click-{{category?.id}}">{{category?.name}}</span>
+  <div class="category-icon click-{{category?.id}}" *ngIf="hasSubCategory">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="sub-category-icon click-{{category?.id}}">
+      <path class="click-{{category?.id}}" d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
     </svg>
   </div>
-  <div *ngIf="category?.is_open">
-    <div *ngIf="hasSubCategory">
-      <div class="app-category"  [hasSubCategory]="false"></div>
+  <ul *ngIf="category?.is_open && hasSubCategory && category && category.sub_categories" class="sub-category-list">
+      <li *ngFor="let cat of category.sub_categories" class="sub-category-item">
+        <div class="app-category" [category]="cat" [hasSubCategory]="!!cat.sub_categories && !!cat.sub_categories.length" [type]="type" (onChanged)="childChange($event)"></div>
+      </li>
+  </ul>
+  <div class="actions" *ngIf="category?.is_open">
+    <button class="category-submit header-button" (click)="openModal()">Добавить</button>
+    <button class="category-submit header-button" (click)="openEditModal()">Изменить</button>
+  </div>
+</div>
+
+<div class="create-category-modal" *ngIf="isOpen" (click)="closeModal($event)">
+  <div class="modal-body">
+    <h3 class="modal-header">Добавить под-категорию в {{category?.name}}</h3>
+    <form [formGroup]="form" (ngSubmit)="submitForm(category!.id)">
+      <input type="text" placeholder="Имя категории" class="form-input modal-input" formControlName="name">
+      <input type="text" placeholder="Title для CEO" class="form-input modal-input" formControlName="title">
+      <textarea type="text" placeholder="Description для CEO" class="form-input modal-input" formControlName="description"></textarea>
+      <input type="text" placeholder="Keywords для CEO" class="form-input modal-input" formControlName="keywords">
+      <input type="number" placeholder="Порядковый номер" class="form-input modal-input" formControlName="index">
+      <div class="library-container">
+        <app-library placeholder="Выберите изоражение для категории" formControlName="image" [height]="300" [width]="275" [limitWidth]="275" [limitHeight]="300"></app-library>
+      </div>
+      <button class="modal-submit" [disabled]="form.invalid">Добавить</button>
+    </form>
+  </div>
+</div>
+
+<div class="create-category-modal edit-category-modal" *ngIf="editIsOpen" (click)="closeEditModal($event)">
+  <div class="modal-body">
+    <h3 class="modal-header">Изменить {{category?.name}}</h3>
+    <input type="text" placeholder="Имя категории" class="form-input modal-input" [(ngModel)]="category!.name">
+    <input type="text" placeholder="Title для CEO" class="form-input modal-input" [(ngModel)]="category!.title">
+    <textarea type="text" placeholder="Description для CEO" class="form-input modal-input" [(ngModel)]="category!.description"></textarea>
+    <input type="text" placeholder="Keywords для CEO" class="form-input modal-input" [(ngModel)]="category!.keywords">
+    <input type="number" placeholder="Порядковый номер" class="form-input modal-input" [(ngModel)]="category!.index">
+    <div class="library-container">
+      <app-library placeholder="Выберите изоражение для категории" [(ngModel)]="image" [height]="300" [width]="275" [limitWidth]="275" [limitHeight]="300" [limit]="1"></app-library>
     </div>
+    <button class="modal-submit" (click)="submitEdit()">Сохранить</button>
   </div>
 </div>

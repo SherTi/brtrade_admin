@@ -63,15 +63,34 @@
 
 .sub-category-list {
   margin-top: 20px;
+  list-style: none;
+  padding-left: 20px;
+}
+
+.sub-category-list * {
+  user-select: none;
+}
+
+.sub-category-list li::before {
+  content: "";
+  background: red;
+  font-weight: bold;
+  width: 1px;
+  height: auto;
+  margin-left: -1em;
+  position: absolute;
+  top: 2px;
+  left: 0;
+  bottom: 2px;
 }
 
 .sub-category-item {
   font-size: 16px;
   font-weight: 500;
-  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .create-category-modal {

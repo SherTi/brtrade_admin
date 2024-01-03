@@ -215,7 +215,6 @@ export class AddItemComponent implements OnInit {
         chars,
         category_id: this.form.get('category_id')?.value,
       };
-      console.log(body);
       this.client.post('/api/product/create', body).subscribe((res) => {
         if (res.status) {
           this.resetForm();

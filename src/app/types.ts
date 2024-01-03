@@ -29,6 +29,12 @@ export interface CategoryItem {
   tractor: boolean;
   selected?: boolean;
   is_open?: boolean;
+  title?: string | null;
+  description?: string | null;
+  keywords?: string | null;
+  index?: number | null;
+  category_id?: string;
+  sub_categories?: CategoryItem[];
   createdAt: string;
   updatedAt: string;
 }
